@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -12,8 +14,8 @@ import javax.persistence.Table;
  */
 
 /**
- * Annotations pour rendre la classe persistante
- * Créer une table produits pour enregistrer les attributs
+ * Annotations pour rendre la classe persistante Créer une table produits pour
+ * enregistrer les attributs
  */
 @Entity
 @Table(name = "produits")
@@ -33,6 +35,13 @@ public class Produit {
 	private int quantite;
 	private boolean selectionne;
 	private byte[] photo;
+
+	/**
+	 * Transformation de l'association UML en Java
+	 */
+	@ManyToOne
+	@JoinColumn(name = "cat_id", referencedColumnName = "id_cat")
+	private Categorie cat;
 
 	/**
 	 * Déclaration des constructeurs
@@ -121,6 +130,14 @@ public class Produit {
 
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+
+	public Categorie getCat() {
+		return cat;
+	}
+
+	public void setCat(Categorie cat) {
+		this.cat = cat;
 	}
 
 }
