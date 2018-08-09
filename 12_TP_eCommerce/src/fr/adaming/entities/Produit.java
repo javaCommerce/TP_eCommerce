@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -34,6 +35,7 @@ public class Produit {
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
+	@Lob
 	private byte[] photo;
 
 	/**
@@ -71,6 +73,31 @@ public class Produit {
 		this.quantite = quantite;
 		this.selectionne = selectionne;
 		this.photo = photo;
+	}
+
+	public Produit(String designation, String description, double prix, int quantite, boolean selectionne, byte[] photo,
+			Categorie cat) {
+		super();
+		this.designation = designation;
+		this.description = description;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.selectionne = selectionne;
+		this.photo = photo;
+		this.cat = cat;
+	}
+
+	public Produit(Long idProduit, String designation, String description, double prix, int quantite,
+			boolean selectionne, byte[] photo, Categorie cat) {
+		super();
+		this.idProduit = idProduit;
+		this.designation = designation;
+		this.description = description;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.selectionne = selectionne;
+		this.photo = photo;
+		this.cat = cat;
 	}
 
 	/**

@@ -10,6 +10,7 @@
 
 		<!-- Enumération des classes persistantes -->
 		<class>fr.adaming.entities.Produit</class>
+		<class>fr.adaming.entities.Categorie</class>
 
 
 		<properties>
