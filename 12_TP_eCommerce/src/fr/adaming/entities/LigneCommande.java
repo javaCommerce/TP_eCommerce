@@ -14,39 +14,28 @@ import javax.persistence.Table;
 
 public class LigneCommande {
 
-	
-	
 	/** Decalartion de l'association uml en java */
 
-	
 	@ManyToOne
-	@JoinColumn(name="pro_id", referencedColumnName="id_pro")
+	@JoinColumn(name = "pro_id", referencedColumnName = "id_pro")
 	private Produit produit;
-	
-	
+
 	@ManyToOne
-	@JoinColumn(name="co_id", referencedColumnName="id_co")
+	@JoinColumn(name = "co_id", referencedColumnName = "id_co")
 	private Commande commande;
 
-	
-	@ManyToOne
-	@JoinColumn(name="pa_id", referencedColumnName="id_pa")
-	private Panier panier;
-	
 	/** Declaration des attribus */
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_Lco")
-	
+
 	private Long idLco;
 	private int quantite;
 	private int prix;
 
-	
-	
 	/** Declaration des constructeurs */
-	
+
 	public LigneCommande(Long idLco, int quantite, int prix) {
 		super();
 		this.idLco = idLco;
@@ -54,20 +43,18 @@ public class LigneCommande {
 		this.prix = prix;
 	}
 
-	public LigneCommande(Produit produit, Commande commande, Panier panier, int quantite, int prix) {
+	public LigneCommande(Produit produit, Commande commande, int quantite, int prix) {
 		super();
 		this.produit = produit;
 		this.commande = commande;
-		this.panier = panier;
 		this.quantite = quantite;
 		this.prix = prix;
 	}
 
-	public LigneCommande(Produit produit, Commande commande, Panier panier, Long idLco, int quantite, int prix) {
+	public LigneCommande(Produit produit, Commande commande, Long idLco, int quantite, int prix) {
 		super();
 		this.produit = produit;
 		this.commande = commande;
-		this.panier = panier;
 		this.idLco = idLco;
 		this.quantite = quantite;
 		this.prix = prix;
@@ -83,10 +70,8 @@ public class LigneCommande {
 		super();
 	}
 
-	
-	
 	/** Declaration des getter et setter */
-	
+
 	public Long getIdLco() {
 		return idLco;
 	}
@@ -105,14 +90,6 @@ public class LigneCommande {
 
 	public void setCommande(Commande commande) {
 		this.commande = commande;
-	}
-
-	public Panier getPanier() {
-		return panier;
-	}
-
-	public void setPanier(Panier panier) {
-		this.panier = panier;
 	}
 
 	public void setIdLco(Long idLco) {
