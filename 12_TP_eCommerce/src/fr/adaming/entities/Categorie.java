@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,12 +28,13 @@ public class Categorie {
 	@Column(name = "id_cat")
 	private long idCategorie;
 	private String nomCategorie;
-	private byte photo;
+	@Lob
+	private byte[] photo;
 	private String description;
 
 	/** Déclaration des constructeurs */
 
-	public Categorie(List<Produit> listeProduit, long idCategorie, String nomCategorie, byte photo,
+	public Categorie(List<Produit> listeProduit, long idCategorie, String nomCategorie, byte[] photo,
 			String description) {
 		super();
 		this.listeProduit = listeProduit;
@@ -42,7 +44,7 @@ public class Categorie {
 		this.description = description;
 	}
 
-	public Categorie(List<Produit> listeProduit, String nomCategorie, byte photo, String description) {
+	public Categorie(List<Produit> listeProduit, String nomCategorie, byte[] photo, String description) {
 		super();
 		this.listeProduit = listeProduit;
 		this.nomCategorie = nomCategorie;
@@ -54,7 +56,7 @@ public class Categorie {
 		super();
 	}
 
-	public Categorie(long idCategorie, String nomCategorie, byte photo, String description) {
+	public Categorie(long idCategorie, String nomCategorie, byte[] photo, String description) {
 		super();
 		this.idCategorie = idCategorie;
 		this.nomCategorie = nomCategorie;
@@ -62,7 +64,7 @@ public class Categorie {
 		this.description = description;
 	}
 
-	public Categorie(String nomCategorie, byte photo, String description) {
+	public Categorie(String nomCategorie, byte[] photo, String description) {
 		super();
 		this.nomCategorie = nomCategorie;
 		this.photo = photo;
@@ -95,11 +97,11 @@ public class Categorie {
 		this.nomCategorie = nomCategorie;
 	}
 
-	public byte getPhoto() {
+	public byte[] getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(byte photo) {
+	public void setPhoto(byte[] photo) {
 		this.photo = photo;
 	}
 
