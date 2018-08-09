@@ -17,6 +17,32 @@
 
 
 
+	<h:outputStylesheet library="css" name="style.css" />
+
+
+
+
+	<div style="height: 35px">	
+		<ui:insert name="header">
+			<ui:include src="/templates/header.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+	
+
+
+	<div style="height: 555px">
+		<ui:insert name="body">
+			<ui:include src="/templates/body.xhtml"></ui:include>
+		</ui:insert>
+	</div>
+
+
+
+	<div style="height: 100px">
+		<ui:insert name="footer">
+			<ui:include src="/templates/footer.xhtml"></ui:include>
+		</ui:insert>
+	</div>
 
 
 

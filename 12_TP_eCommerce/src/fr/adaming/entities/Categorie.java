@@ -17,10 +17,7 @@ import javax.persistence.Table;
 
 public class Categorie {
 
-	/** déclaration de l'association uml en java */
-
-	@OneToMany(mappedBy = "cat", cascade = CascadeType.PERSIST)
-	private List<Produit> listeProduit;
+	
 
 	/** déclaration des attribus */
 	@Id
@@ -31,6 +28,14 @@ public class Categorie {
 	@Lob
 	private byte[] photo;
 	private String description;
+	
+	
+	/** déclaration de l'association uml en java */
+
+	@OneToMany(mappedBy = "cat", cascade = CascadeType.PERSIST)
+	private List<Produit> listeProduit;
+	
+	
 
 	/** Déclaration des constructeurs */
 
@@ -72,9 +77,14 @@ public class Categorie {
 	}
 	
 	/**Déclaration des getter et setter*/
-
+	
+	
 	public List<Produit> getListeProduit() {
 		return listeProduit;
+	}
+
+	public void setIdCategorie(Long idCategorie) {
+		this.idCategorie = idCategorie;
 	}
 
 	public void setListeProduit(List<Produit> listeProduit) {

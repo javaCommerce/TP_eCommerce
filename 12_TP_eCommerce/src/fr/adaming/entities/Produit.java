@@ -43,9 +43,13 @@ public class Produit {
 	@Lob
 	private byte[] photo;
 
+	
+	
 	/**
 	 * Transformation de l'association UML en Java
 	 */
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "cat_id", referencedColumnName = "id_cat")
 	private Categorie cat;
@@ -111,8 +115,19 @@ public class Produit {
 	/**
 	 * Déclaration des getters et setters
 	 */
+	
+	
+	
 	public Long getIdProduit() {
 		return idProduit;
+	}
+
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
+	}
+
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
 	}
 
 	public void setIdProduit(Long idProduit) {

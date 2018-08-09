@@ -94,6 +94,43 @@ public class AdminDaoImpl implements IAdminDao {
 
 
 
+	/**Déclaration des méthodes du CRUD de categorie*/
+
+	
+	public Categorie addCategorie(Categorie cat) {
+		em.persist(cat);
+		return cat;
+	}
+
+
+
+
+	public Categorie supprCategorie(Categorie cat) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+	public Categorie modifCategorie(Categorie cat) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+
+	public Categorie getCategorieByName(Categorie cat) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 
 	
 

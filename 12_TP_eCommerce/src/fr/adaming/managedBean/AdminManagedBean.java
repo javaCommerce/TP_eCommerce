@@ -9,12 +9,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import org.primefaces.component.message.Message;
 
 import fr.adaming.entities.Admin;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IAdminService;
+import fr.adaming.service.IClientService;
 
 @ManagedBean(name="aMB")
 @RequestScoped
@@ -28,7 +28,8 @@ public class AdminManagedBean implements Serializable{
 	
 	@EJB
 	private IAdminService aService;
-	
+	@EJB
+	private IClientService clService;
 	
 	/**Déclaration des attribus*/
 	
@@ -114,27 +115,46 @@ public class AdminManagedBean implements Serializable{
 	
 	
 	
-	public String ajouterProduit(){
+	public String ajouterProduit() {
+
+		Produit pAjout = aService.addProduit(this.produit, this.cat);
+
+		if (pAjout.getIdProduit() != 0) {
+
+			List<Produit> listeProduit = aService.getAllProduit(cat);
+
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
+
+			return "accueil";
+		} else {
+
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout n'à pas été effectué"));
+			return "ajoutProduit";
+		}
+	}
 	
-	Produit pAjout = aService.addProduit(this.produit, this.cat);
 	
-	if (pAjout.getIdProduit() != 0){
+	
+	
+	public String ajouterCategorie(){	
+		
+
+	Categorie catAjout = aService.addCategorie(this.cat);
+		
+	if (catAjout.getIdCategorie() != 0){
 		
 		
-		List<Produit> listeProduit = aService.getAllProduit(cat);
+		List<Categorie> listeCategorie = clService.getAllCategoriesService();
 		
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", listeCategorie);
 		
 		return "accueil";
 	}else{
 	
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout n'à pas été effectué"));
-		return "ajoutProduit";
+		return "ajoutCategorie";
 	}
 	}
-	
-	
-	
 	
 	
 	

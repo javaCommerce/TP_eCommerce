@@ -26,5 +26,13 @@ public interface IAdminDao {
 	
 	public Admin isExist(Admin a);
 	
-
+	
+	
+	public Categorie addCategorie(Categorie cat);
+	
+	public Categorie supprCategorie(Categorie cat);
+	
+	public Categorie modifCategorie(Categorie cat);
+	
+	public Categorie getCategorieByName(Categorie cat);
 }
