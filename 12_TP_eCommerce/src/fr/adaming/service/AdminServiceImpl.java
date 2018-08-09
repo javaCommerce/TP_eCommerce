@@ -1,21 +1,13 @@
-package fr.adaming.Dao;
+package fr.adaming.service;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import fr.adaming.entities.Admin;
 import fr.adaming.entities.Produit;
 
-@Stateless
-
-public class AdminDaoImpl implements IAdminDao {
+public class AdminServiceImpl implements IAdminService {
 	
-	/**Déclaration du persistence context*/
 	
-	@PersistenceContext(unitName="PU_eCommerce")
-	private EntityManager em;
+	/**Déclaration de l'association uml en java*/
 	
+	IAdminDao 
 	
 	
 	
@@ -23,13 +15,9 @@ public class AdminDaoImpl implements IAdminDao {
 	
 
 	public Produit addProduit(Produit p) {
-		em.persist(p);
-		return p;
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	
-	
-	
 
 	public Produit getProduitById(Produit p) {
 		// TODO Auto-generated method stub
@@ -50,17 +38,5 @@ public class AdminDaoImpl implements IAdminDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
 
-	
-	
-
-
-	
-	
-	
-	
-	
 }

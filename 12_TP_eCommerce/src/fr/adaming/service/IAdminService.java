@@ -1,13 +1,13 @@
-package fr.adaming.Dao;
+package fr.adaming.service;
 
 import javax.ejb.Local;
 
-import fr.adaming.entities.Admin;
 import fr.adaming.entities.Produit;
 
 @Local
 
-public interface IAdminDao {
+public interface IAdminService {
+	
 	
 	/**Déclaration des méthodes de admin dao*/
 	
@@ -20,8 +20,6 @@ public interface IAdminDao {
 	public Produit modifPoduit(Produit p);
 	
 	public Produit getAllProduit(Produit p);
-	
-	
 	
 
 }
