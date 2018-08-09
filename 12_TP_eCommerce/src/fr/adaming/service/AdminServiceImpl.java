@@ -1,13 +1,16 @@
 package fr.adaming.service;
 
+import javax.ejb.EJB;
+
+import fr.adaming.Dao.IAdminDao;
 import fr.adaming.entities.Produit;
 
 public class AdminServiceImpl implements IAdminService {
 	
 	
-	/**Déclaration de l'association uml en java*/
-	
-	IAdminDao 
+	/**Déclaration de l'association uml en java et injecter ejb*/
+	@EJB
+	private IAdminDao aDao;
 	
 	
 	
@@ -15,10 +18,17 @@ public class AdminServiceImpl implements IAdminService {
 	
 
 	public Produit addProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return aDao.addProduit(p);
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public Produit getProduitById(Produit p) {
 		// TODO Auto-generated method stub
 		return null;
