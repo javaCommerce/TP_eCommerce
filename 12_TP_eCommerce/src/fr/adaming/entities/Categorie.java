@@ -26,7 +26,7 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cat")
-	private long idCategorie;
+	private Long idCategorie;
 	private String nomCategorie;
 	@Lob
 	private byte[] photo;
