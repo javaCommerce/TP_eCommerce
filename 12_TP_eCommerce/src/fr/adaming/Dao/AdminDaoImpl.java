@@ -1,5 +1,7 @@
 package fr.adaming.Dao;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -7,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.adaming.entities.Admin;
+import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 
 @Stateless
@@ -24,7 +27,7 @@ public class AdminDaoImpl implements IAdminDao {
 	/**Déclaration des méthodes du CRUD*/
 	
 
-	public Produit addProduit(Produit p) {
+	public Produit addProduit(Produit p, Categorie cat) {
 		em.persist(p);
 		return p;
 	}
@@ -48,10 +51,19 @@ public class AdminDaoImpl implements IAdminDao {
 		return null;
 	}
 
-	public Produit getAllProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public List<Produit> getAllProduit(Categorie cat) {
+		
+		
+		String req = "SELECT p FROM Produit As p WHERE p.categorie=:pId";
+		
+		Query query = em.createQuery(req);
+		
+		query.setParameter("pId", cat.getIdCategorie());
+		
+		return query.getResultList();
 	}
+	
 
 
 
@@ -78,6 +90,11 @@ public class AdminDaoImpl implements IAdminDao {
 		
 		return null;
 	}
+
+
+
+
+
 	
 
 	

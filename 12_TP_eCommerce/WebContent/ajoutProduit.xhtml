@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -6,9 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-
-</h:head>
+<h:head>Ajouter un produit</h:head>
 
 
 
@@ -17,17 +15,51 @@
 
 
 
+	<h:form>
+		<h3 style="margin-top: 0"></h3>
+		<p>Décrivez le produit :</p>
+		<p:inputTextarea rows="10" cols="50"
+			completeMethod="#{inputTextareaView.completeArea}" queryDelay="750"
+			minQueryLength="4" value="#{aMB.produit.description}"/>		
+	</h:form>
+
+
+
+	<h:form>
+		<h:panelGrid columns="2">
+		Designation : <p:inputText value="#{aMB.produit.designation}" />
+		</h:panelGrid>
+	</h:form>
+
+
+	<h:form>
+		<p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}"
+			mode="advanced" dragDropSupport="true" update="messages"
+			sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" value="#{aMB.produit.photo}"/>
+
+		<p:growl id="messages" showDetail="true" />
+	</h:form>
+
+
+	<h:form>
+		<h:panelGrid columns="2">
+		Prix : <p:inputText value="#{aMB.produit.prix}" />
+		</h:panelGrid>
+	</h:form>
+
+	<h:form>
+		<h:panelGrid columns="2">
+		Quantité : <p:inputText value="#{aMB.produit.quantite}" />
+		</h:panelGrid>
+	</h:form>
 
 
 
 
 
-
-
-
-
-
-
+	<h:form>
+		<h:commandButton value="ajouter" action="#{aMB.ajouterProduit}" />
+	</h:form>
 
 
 </h:body>

@@ -1,6 +1,7 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -11,6 +12,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.component.message.Message;
 
 import fr.adaming.entities.Admin;
+import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IAdminService;
 
@@ -32,11 +34,14 @@ public class AdminManagedBean implements Serializable{
 	
 	private Produit produit;
 	private Admin admin;
-
+	private Categorie cat;
+	
+	
 	/**Constructeur vide*/
 	
 	public AdminManagedBean() {
 		super();
+		this.admin=new Admin();
 	}
 
 
@@ -46,6 +51,16 @@ public class AdminManagedBean implements Serializable{
 	
 	public IAdminService getaService() {
 		return aService;
+	}
+
+
+	public Categorie getCat() {
+		return cat;
+	}
+
+
+	public void setCat(Categorie cat) {
+		this.cat = cat;
 	}
 
 
@@ -98,14 +113,25 @@ public class AdminManagedBean implements Serializable{
 	}
 	
 	
-	//public String ajouterProduit();
 	
+	public String ajouterProduit(){
 	
+	Produit pAjout = aService.addProduit(this.produit, this.cat);
 	
+	if (pAjout.getIdProduit() != 0){
+		
+		
+		List<Produit> listeProduit = aService.getAllProduit(cat);
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
+		
+		return "accueil";
+	}else{
 	
-	
-	
-	
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout n'à pas été effectué"));
+		return "ajoutProduit";
+	}
+	}
 	
 	
 	
