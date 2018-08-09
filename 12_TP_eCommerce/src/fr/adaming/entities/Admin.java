@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Définition de classe persistante Admin
+ * Définition de la classe persistante Admin
  * @author inti0489
  *
  */

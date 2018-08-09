@@ -12,6 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Définition de la classe persistante Produit
@@ -37,6 +38,7 @@ public class Produit {
 	private String description;
 	private double prix;
 	private int quantite;
+	@Transient
 	private boolean selectionne;
 	@Lob
 	private byte[] photo;
