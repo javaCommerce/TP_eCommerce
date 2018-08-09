@@ -93,6 +93,13 @@ public class AdminDaoImpl implements IAdminDao {
 
 
 
+	
+	
+	
+	
+	
+	
+	
 
 	/**Déclaration des méthodes du CRUD de categorie*/
 

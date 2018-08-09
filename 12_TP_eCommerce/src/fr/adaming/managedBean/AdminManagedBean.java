@@ -7,7 +7,9 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.model.UploadedFile;
 
@@ -87,7 +89,15 @@ public class AdminManagedBean implements Serializable {
 		this.file = file;
 	}
 
-	/** Autre méthode (CRUD) */
+	
+	
+	
+	
+	/** Autre méthode (Connection et déconnection) */
+	
+	
+	
+	/**Développement de la méthode se connecter*/
 
 	public String connection() {
 
@@ -107,6 +117,33 @@ public class AdminManagedBean implements Serializable {
 		}
 
 	}
+	
+	
+	/**développement de la méthode se déconnecter*/
+	
+	
+	public String logout(){
+ 		FacesContext context = FacesContext.getCurrentInstance();
+ 		ExternalContext ec = context.getExternalContext();
+ 
+ 		final HttpServletRequest request = (HttpServletRequest)ec.getRequest();
+ 	     request.getSession( false ).invalidate();
+ 	  
+ 	     
+ 	     return "login";
+ 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public String ajouterProduit() {
 

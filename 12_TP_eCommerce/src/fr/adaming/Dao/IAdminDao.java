@@ -12,7 +12,15 @@ import fr.adaming.entities.Produit;
 
 public interface IAdminDao {
 	
-	/**Déclaration des méthodes de admin dao*/
+	/**Déclaration de la méthode isExist*/
+	
+	
+	public Admin isExist(Admin a);
+	
+	
+	
+	
+	
 	
 	public Produit addProduit(Produit p, Categorie cat);
 	
@@ -24,7 +32,10 @@ public interface IAdminDao {
 	
 	public List<Produit> getAllProduit(Categorie cat);
 	
-	public Admin isExist(Admin a);
+	
+	
+	
+	
 	
 	
 	
