@@ -12,15 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "commandes")
+@Table(name = "clients")
 
 public class Client {
 
-	/** Déclaration de l'association uml en java */
-	
-	
-	@OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST)
-	private List<Commande> listeCommande;
+
 
 	
 	
@@ -36,6 +32,12 @@ public class Client {
 	private String adresse;
 	private String email;
 	private String tel;
+
+	
+	
+	/** Déclaration de l'association uml en java */
+	@OneToMany(mappedBy = "client", cascade = CascadeType.PERSIST)
+	private List<Commande> listeCommande;
 
 	/** Declaration des constructeurs */
 

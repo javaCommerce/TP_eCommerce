@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import javax.ejb.Local;
 
+import fr.adaming.entities.Admin;
 import fr.adaming.entities.Produit;
 
 @Local
@@ -20,6 +21,8 @@ public interface IAdminService {
 	public Produit modifPoduit(Produit p);
 	
 	public Produit getAllProduit(Produit p);
+	
+	public Admin isExist(Admin a);
 	
 
 }

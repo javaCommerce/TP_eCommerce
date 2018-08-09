@@ -21,7 +21,7 @@ public interface IAdminDao {
 	
 	public Produit getAllProduit(Produit p);
 	
-	
+	public Admin isExist(Admin a);
 	
 
 }
