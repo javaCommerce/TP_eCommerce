@@ -29,8 +29,12 @@ public class LigneCommande {
 	private Commande commande;
 
 	
+	@ManyToOne
+	@JoinColumn(name="pa_id", referencedColumnName="id_pa")
+	private Panier panier;
 	
 	/** Declaration des attribus */
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_Lco")
@@ -42,9 +46,28 @@ public class LigneCommande {
 	
 	
 	/** Declaration des constructeurs */
-
+	
 	public LigneCommande(Long idLco, int quantite, int prix) {
 		super();
+		this.idLco = idLco;
+		this.quantite = quantite;
+		this.prix = prix;
+	}
+
+	public LigneCommande(Produit produit, Commande commande, Panier panier, int quantite, int prix) {
+		super();
+		this.produit = produit;
+		this.commande = commande;
+		this.panier = panier;
+		this.quantite = quantite;
+		this.prix = prix;
+	}
+
+	public LigneCommande(Produit produit, Commande commande, Panier panier, Long idLco, int quantite, int prix) {
+		super();
+		this.produit = produit;
+		this.commande = commande;
+		this.panier = panier;
 		this.idLco = idLco;
 		this.quantite = quantite;
 		this.prix = prix;
@@ -60,10 +83,36 @@ public class LigneCommande {
 		super();
 	}
 
+	
+	
 	/** Declaration des getter et setter */
-
+	
 	public Long getIdLco() {
 		return idLco;
+	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
+	public Panier getPanier() {
+		return panier;
+	}
+
+	public void setPanier(Panier panier) {
+		this.panier = panier;
 	}
 
 	public void setIdLco(Long idLco) {
