@@ -11,13 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "categories")
 
 public class Categorie {
-
-	
 
 	/** déclaration des attribus */
 	@Id
@@ -25,17 +24,18 @@ public class Categorie {
 	@Column(name = "id_cat")
 	private Long idCategorie;
 	private String nomCategorie;
+	private String description;
+
 	@Lob
 	private byte[] photo;
-	private String description;
 	
-	
+	@Transient
+	private String image;
+
 	/** déclaration de l'association uml en java */
 
 	@OneToMany(mappedBy = "cat", cascade = CascadeType.PERSIST)
 	private List<Produit> listeProduit;
-	
-	
 
 	/** Déclaration des constructeurs */
 
@@ -75,10 +75,9 @@ public class Categorie {
 		this.photo = photo;
 		this.description = description;
 	}
-	
-	/**Déclaration des getter et setter*/
-	
-	
+
+	/** Déclaration des getter et setter */
+
 	public List<Produit> getListeProduit() {
 		return listeProduit;
 	}
@@ -122,28 +121,23 @@ public class Categorie {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	/**Declaration de la méthode to string*/
 	
+	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	/** Declaration de la méthode to string */
+
 	@Override
 	public String toString() {
 		return "Categorie [listeProduit=" + listeProduit + ", idCategorie=" + idCategorie + ", nomCategorie="
 				+ nomCategorie + ", photo=" + photo + ", description=" + description + "]";
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

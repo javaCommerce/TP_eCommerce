@@ -18,36 +18,19 @@
 
 
 
-	<h:form>
-		<h3 style="margin-top: 0"></h3>
-		<p>Décrivez la categorie :</p>
-		<p:inputTextarea rows="10" cols="50"
-			completeMethod="#{inputTextareaView.completeArea}" queryDelay="750"
-			minQueryLength="4" value="#{aMB.cat.description}"/>		
-	</h:form>
-
-
-
-	<h:form>
+	<h:form enctype="multipart/form-data">
 		<h:panelGrid columns="2">
-		nom : <p:inputText value="#{aMB.cat.nomCategorie}" />
+			Décrivez la categorie :<p:inputText value="#{aMB.cat.description}" />		
+
+		
+			nom : <p:inputText value="#{aMB.cat.nomCategorie}" />
+
+
+
+			<p:fileUpload value="#{aMB.file}" mode="simple" skinSimple="true"/>
+
+			<h:commandButton value="ajouter" action="#{aMB.ajouterCategorie}" />
 		</h:panelGrid>
-	</h:form>
-
-
-	<h:form>
-		<p:fileUpload fileUploadListener="#{fileUploadView.handleFileUpload}"
-			mode="advanced" dragDropSupport="true" update="messages"
-			sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" value="#{aMB.cat.photo}"/>
-
-		<p:growl id="messages" showDetail="true" />
-	</h:form>
-
-
-
-
-	<h:form>
-		<h:commandButton value="ajouter" action="#{aMB.ajouterCategorie}" />
 	</h:form>
 
 
