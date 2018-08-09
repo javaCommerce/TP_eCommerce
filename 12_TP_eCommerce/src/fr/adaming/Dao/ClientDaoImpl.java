@@ -16,12 +16,11 @@ public class ClientDaoImpl implements IClientDao {
 	@PersistenceContext(unitName = "PU_eCommerce")
 	private EntityManager em;
 
-	
 	/**
 	 * Définition de la méthode client pour consulter toutes les catégories :
 	 * Elle n'accepte rien en entrée et retourne une liste de catégories
 	 */
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Categorie> getAllCategories() {
 
@@ -42,9 +41,25 @@ public class ClientDaoImpl implements IClientDao {
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Produit> getAllProduits(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
+
+		/**
+		 * Création de la requête JPQL qui récupère les produits d'une catégorie
+		 */
+		String req = "SELECT p FROM Produit p WHERE p.categorie.id=:pId";
+
+		/**
+		 * Création du query pour envoyer la requête JPQL
+		 */
+		Query query = em.createQuery(req);
+
+		/**
+		 * Passage des paramètres
+		 */
+		query.setParameter("pId", cat.getIdCategorie());
+
+		return query.getResultList();
 	}
 
 	public Produit addProduit() {

@@ -19,7 +19,8 @@ import fr.adaming.service.IClientService;
  */
 
 /**
- * Annotation pour nommé le managedBean Annotation pour définir la portée du
+ * Annotation pour nommé le managedBean 
+ * Annotation pour définir la portée du
  * managedBean
  * 
  * @author inti0489
