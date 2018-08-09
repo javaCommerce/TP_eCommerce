@@ -45,6 +45,9 @@ public class Commande {
 	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	Client client;
 
+	@OneToMany(mappedBy = "commande")
+	List<LigneCommande> listeLigneCommande;
+
 	/**
 	 * Déclaration des constructeurs
 	 */

@@ -1,5 +1,7 @@
 package fr.adaming.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -44,6 +47,9 @@ public class Produit {
 	@ManyToOne
 	@JoinColumn(name = "cat_id", referencedColumnName = "id_cat")
 	private Categorie cat;
+
+	@OneToMany(mappedBy = "produit")
+	List<LigneCommande> listeLigneCommande;
 
 	/**
 	 * Déclaration des constructeurs
