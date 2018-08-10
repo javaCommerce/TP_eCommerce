@@ -19,15 +19,12 @@ import fr.adaming.entities.Produit;
 public interface IClientDao {
 
 	public Client addClient(Client c);
-	
+
+	public int deleteClient(Client c);
+
+	public Client getClientByNom(Client c);
+
 	public List<Client> getAllClient();
 
-	public List<Categorie> getAllCategories();
-
-	public List<Produit> getAllProduits(Categorie cat);
-
-	public List<Produit> getProduitByKeyWord(Categorie cat);
-
-	public Produit addProduit();
 
 }

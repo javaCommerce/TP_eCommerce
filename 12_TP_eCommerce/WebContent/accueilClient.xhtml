@@ -12,35 +12,37 @@
 
 <h:body>
 
-	<h:form id="formCat">
-		<p:growl id="msgs" showDetail="true" />
+	Page accueil client test
 
-		<p:dataTable id="catTable" var="cat" value="#{clMB.getAllCategories}">
-			<f:facet name="header">
-            Catégories de produits disponibles chez nous
-        </f:facet>
-			<p:column headerText="Nom">
-				<h:outputText value="#{cat.nom}" />
-			</p:column>
-			<p:column headerText="Photo">
-				<h:outputText value="#{cat.photo}" />
-			</p:column>
-			<p:column headerText="Description">
-				<h:outputText value="#{cat.description}" />
-			</p:column>
-			<p:column style="width:32px;text-align: center">
-				<p:commandButton update=":form:carDetail"
-					oncomplete="PF('carDialog').show()" icon="ui-icon-search"
-					title="View">
-					<f:setPropertyActionListener value="#{produit}"
-						target="#{clMB.getAllProduits}" />
-				</p:commandButton>
-			</p:column>
-		</p:dataTable>
+<p:dataTable var="cat" value="#{sessionScope.catListe}">
+    <p:column headerText="Désignation">
+        <h:outputText value="#{cat.idCategorie}" />
+    </p:column>
+ 
+     <p:column headerText="Nom">
+        <h:outputText value="#{cat.nomCategorie}" />
+    </p:column>
+ 
+    <p:column headerText="Description">
+        <h:outputText value="#{cat.description}" />
+    </p:column>
+ 
+    <p:column headerText="Photo">
+        <h:graphicImage value="#{cat.image}" style="width:100px; height:100px"/>
+    </p:column>
+ 
+    <p:column headerText="Color">
+        <h:outputText value="#{car.color}" />
+    </p:column>
+</p:dataTable>
+
+
+
+
+<h:form>
+		<h:commandLink value="Supprimer mon compte"
+			action="supprimerClient" />
 	</h:form>
-
-
-
 
 
 

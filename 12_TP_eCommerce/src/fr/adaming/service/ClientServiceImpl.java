@@ -36,4 +36,24 @@ public class ClientServiceImpl implements IClientService {
 		return clDao.getAllClient();
 	}
 
+	public int deleteClient(Client c) {
+
+		/**
+		 * Récupérer le client qui va être supprimé
+		 */
+		Client clientDelete = this.getClientByNom(c);
+
+		if (clientDelete != null) {
+			return clDao.deleteClient(clientDelete);
+
+		}
+
+		return 0;
+
+	}
+
+	public Client getClientByNom(Client c) {
+		return clDao.getClientByNom(c);
+	}
+
 }

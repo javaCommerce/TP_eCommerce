@@ -20,6 +20,10 @@ public interface IClientService {
 
 	public Client addClient(Client c);
 	
+	public int deleteClient(Client c);
+	
+	public Client getClientByNom(Client c);
+	
 	public List<Client> getAllClient();
 
 	public List<Categorie> getAllCategoriesService();

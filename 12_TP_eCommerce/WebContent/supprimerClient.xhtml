@@ -7,31 +7,25 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
+	<title>Suppression du compte</title>
 </h:head>
-
-
 
 <h:body>
 
+	<h:form>
 
-<h:form>
-<h:commandButton value="afficher liste cat" action="#{clMB.getAllCategories}"></h:commandButton>
-</h:form>
+	Nom du client dont on souhaite supprimer le compte	<p:inputText
+			value="#{clMB.client.nomClient}" />
 
+		<h:commandButton value="Confirmer la suppression"
+			action="#{clMB.deleteClient}" />
+	</h:form>
 
-
-
-
-
-
-
-
-
-
+	<h1>
+		<h:messages />
+	</h1>
 
 
 
 </h:body>
-
 </html>

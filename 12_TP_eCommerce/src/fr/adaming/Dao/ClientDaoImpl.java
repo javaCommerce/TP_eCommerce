@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
@@ -39,7 +41,13 @@ public class ClientDaoImpl implements IClientDao {
 		 * retourne la liste des catégories trouvée
 		 */
 
-		return query.getResultList();
+		List<Categorie> listeCats = query.getResultList();
+
+		for (Categorie cat : listeCats) {
+			cat.setImage("data:image/png;base64," + Base64.encodeBase64String(cat.getPhoto()));
+		}
+
+		return listeCats;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -73,7 +81,7 @@ public class ClientDaoImpl implements IClientDao {
 		/**
 		 * Création de la requête JPQL qui récupère le/les produit(s)
 		 */
-		String req = "SELECT p FROM Produit p WHERE p.nom LIKE '%'";
+		String req = "SELECT p FROM Produit p WHERE p.designation IN p.description";
 
 		return null;
 	}
@@ -101,6 +109,31 @@ public class ClientDaoImpl implements IClientDao {
 		 */
 
 		return query.getResultList();
+	}
+
+	public int deleteClient(Client c) {
+		return 0;
+
+	}
+
+	public Client getClientByNom(Client c) {
+
+		/**
+		 * Création de la requête JPQL
+		 */
+		String req = "SELECT cl FROM Client cl WHERE cl.nomClient=:pNom";
+
+		/**
+		 * Création du query
+		 */
+		Query query = em.createQuery(req);
+
+		/**
+		 * Passage des paramètres
+		 */
+		query.setParameter("pNom", c.getNomClient());
+
+		return (Client) query.getSingleResult();
 	}
 
 }

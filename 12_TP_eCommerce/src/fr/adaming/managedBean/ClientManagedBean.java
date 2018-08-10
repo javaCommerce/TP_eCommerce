@@ -1,5 +1,6 @@
 package fr.adaming.managedBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -29,7 +30,7 @@ import fr.adaming.service.IClientService;
 
 @ManagedBean(name = "clMB")
 @SessionScoped
-public class ClientManagedBean {
+public class ClientManagedBean implements Serializable {
 
 	/**
 	 * Transformation de l'association UML en Java
@@ -50,6 +51,7 @@ public class ClientManagedBean {
 	public ClientManagedBean() {
 		super();
 		this.client = new Client();
+		
 	}
 
 	/**
@@ -106,6 +108,31 @@ public class ClientManagedBean {
 
 	}
 
+	public String deleteClient() {
+
+		int clVerif = clService.deleteClient(this.client);
+
+		if (clVerif != 0) {
+
+			/**
+			 * Récupérer la liste des clients qui existent pour la mettre à jour
+			 */
+			List<Client> listeClient = clService.getAllClient();
+
+			/**
+			 * Ajout du client dans la session http
+			 */
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clSession", listeClient);
+
+			return "accueilClient";
+
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("La suppression de votre compte a échoué !"));
+			return "supprimerClient";
+		}
+	}
+
 	public String getAllCategories() {
 
 		/**
@@ -118,7 +145,7 @@ public class ClientManagedBean {
 			/**
 			 * Ajouter la liste trouvée dans la session http
 			 */
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clSession", listeCatOut);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListe", listeCatOut);
 
 			return "accueilClient";
 		} else {
