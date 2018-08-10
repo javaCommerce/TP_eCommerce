@@ -14,11 +14,11 @@ public interface ICategorieService {
 	
 	public Categorie addCategorie(Categorie cat);
 	
-	public Categorie supprCategorie(Categorie cat);
+	public int supprCategorie(Categorie cat);
 	
-	public Categorie modifCategorie(Categorie cat);
+	public int modifCategorie(Categorie cat);
 	
-	public Categorie getCategorieByName(Categorie cat);
+	public Categorie getCategorieById(Categorie cat);
 	
 	public List<Categorie> getAllCategorie();
 	

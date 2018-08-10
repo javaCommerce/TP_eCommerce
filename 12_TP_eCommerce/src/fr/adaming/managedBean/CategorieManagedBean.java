@@ -95,7 +95,13 @@ public class CategorieManagedBean implements Serializable {
 	}
 	
 	
-	
+	public String getCatById(){
+		
+		
+		
+		
+		
+	}
 	
 	
 	

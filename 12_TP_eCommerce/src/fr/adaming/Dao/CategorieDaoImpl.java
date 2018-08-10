@@ -39,20 +39,38 @@ public class CategorieDaoImpl implements ICategorieDao{
 	
 	
 
-	public Categorie supprCategorie(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
+	public int supprCategorie(Categorie cat) {
+		try{
+			em.remove(cat);
+			return 1;
+		}catch (Exception ex){
+			
+		}
+		return 0;
 	}
+	
+	
+	
+	
 
-	public Categorie modifCategorie(Categorie cat) {
+	public int modifCategorie(Categorie cat) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
+	
+	
+	
+	
 
 	public Categorie getCategorieById(Categorie cat) {
 		return em.find(Categorie.class, cat.getIdCategorie());
 	}
 
+	
+	
+	
+	
+	
 	/***************************Liste des catégories*/	
 	
 	@SuppressWarnings("unchecked")

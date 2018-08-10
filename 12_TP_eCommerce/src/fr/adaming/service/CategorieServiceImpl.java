@@ -26,22 +26,48 @@ public class CategorieServiceImpl implements ICategorieService{
 		
 		
 	}
+	
+	
+	
+	
 
-	public Categorie supprCategorie(Categorie cat) {
+	public int supprCategorie(Categorie cat) {
+		Categorie catSuppr=this.getCategorieById(cat);
+		
+		if(catSuppr!=null){
+			return catDao.supprCategorie(catSuppr);
+		}
+				return 0;
+	}
+	
+	
+	
+	
+	
+
+	public int modifCategorie(Categorie cat) {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	
+	public Categorie getCategorieById(Categorie cat) {
+
+		Categorie catOut=catDao.getCategorieById(cat);
+		
+		if(catOut!=null){
+			return catOut;
+		}
+		
 		return null;
 	}
 
-	public Categorie modifCategorie(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Categorie getCategorieByName(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	
+	
+	
+	
 	public List<Categorie> getAllCategorie() {
 		
 		return catDao.getAllCategorie();
