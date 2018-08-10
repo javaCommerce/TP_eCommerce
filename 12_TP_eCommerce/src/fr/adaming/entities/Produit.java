@@ -43,13 +43,13 @@ public class Produit {
 	@Lob
 	private byte[] photo;
 
-	
-	
+	@Transient
+	private String image;
+
 	/**
 	 * Transformation de l'association UML en Java
 	 */
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cat_id", referencedColumnName = "id_cat")
 	private Categorie cat;
@@ -115,9 +115,7 @@ public class Produit {
 	/**
 	 * Déclaration des getters et setters
 	 */
-	
-	
-	
+
 	public Long getIdProduit() {
 		return idProduit;
 	}
@@ -188,6 +186,14 @@ public class Produit {
 
 	public void setCat(Categorie cat) {
 		this.cat = cat;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 }
