@@ -112,6 +112,16 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	public int deleteClient(Client c) {
+		try {
+			/**
+			 * remove le client
+			 */
+			em.remove(c);
+			return 1;
+		} catch (Exception arg) {
+			arg.printStackTrace();
+
+		}
 		return 0;
 
 	}
@@ -134,6 +144,25 @@ public class ClientDaoImpl implements IClientDao {
 		query.setParameter("pNom", c.getNomClient());
 
 		return (Client) query.getSingleResult();
+	}
+
+	public int updateClient(Client c) {
+
+		try {
+			/**
+			 * récupérer le client à modifier
+			 */
+			em.find(Client.class, c.getIdClient());
+			/**
+			 * merge le client
+			 */
+			em.merge(c);
+			return 1;
+		} catch (Exception arg) {
+			arg.printStackTrace();
+
+		}
+		return 0;
 	}
 
 }

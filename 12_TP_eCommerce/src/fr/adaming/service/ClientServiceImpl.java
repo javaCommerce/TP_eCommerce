@@ -20,13 +20,6 @@ public class ClientServiceImpl implements IClientService {
 	@EJB
 	IClientDao clDao;
 
-	public List<Categorie> getAllCategoriesService() {
-		return clDao.getAllCategories();
-	}
-
-	public List<Produit> getAllProduitsService(Categorie cat) {
-		return clDao.getAllProduits(cat);
-	}
 
 	public Client addClient(Client c) {
 		return clDao.addClient(c);
@@ -54,6 +47,20 @@ public class ClientServiceImpl implements IClientService {
 
 	public Client getClientByNom(Client c) {
 		return clDao.getClientByNom(c);
+	}
+
+	public List<Categorie> getAllCategoriesService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Produit> getAllProduitsService(Categorie cat) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int updateClient(Client c) {	
+		return clDao.updateClient(c);
 	}
 
 }

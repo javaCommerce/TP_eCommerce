@@ -22,9 +22,10 @@ public interface IClientDao {
 
 	public int deleteClient(Client c);
 
+	public int updateClient(Client c);
+
 	public Client getClientByNom(Client c);
 
 	public List<Client> getAllClient();
-
 
 }

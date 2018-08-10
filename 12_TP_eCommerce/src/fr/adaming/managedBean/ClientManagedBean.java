@@ -51,7 +51,7 @@ public class ClientManagedBean implements Serializable {
 	public ClientManagedBean() {
 		super();
 		this.client = new Client();
-		
+
 	}
 
 	/**
@@ -131,6 +131,30 @@ public class ClientManagedBean implements Serializable {
 					new FacesMessage("La suppression de votre compte a échoué !"));
 			return "supprimerClient";
 		}
+	}
+
+	public String updateClient() {
+
+		int clVerif = clService.updateClient(this.client);
+
+		if (clVerif != 0) {
+			/**
+			 * Récupérer la liste des clients qui existent pour la mettre à jour
+			 */
+			List<Client> listeClient = clService.getAllClient();
+
+			/**
+			 * Ajout du client dans la session http
+			 */
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clSession", listeClient);
+
+			return "accueilClient";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Vos informations de compte n'ont pas pu être modifiées !"));
+			return "modifierClient";
+		}
+
 	}
 
 	public String getAllCategories() {

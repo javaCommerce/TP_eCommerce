@@ -15,33 +15,37 @@
 	Page accueil client test
 
 <p:dataTable var="cat" value="#{sessionScope.catListe}">
-    <p:column headerText="Désignation">
-        <h:outputText value="#{cat.idCategorie}" />
-    </p:column>
- 
-     <p:column headerText="Nom">
-        <h:outputText value="#{cat.nomCategorie}" />
-    </p:column>
- 
-    <p:column headerText="Description">
-        <h:outputText value="#{cat.description}" />
-    </p:column>
- 
-    <p:column headerText="Photo">
-        <h:graphicImage value="#{cat.image}" style="width:100px; height:100px"/>
-    </p:column>
- 
-    <p:column headerText="Color">
-        <h:outputText value="#{car.color}" />
-    </p:column>
-</p:dataTable>
+		<p:column headerText="Désignation">
+			<h:outputText value="#{cat.idCategorie}" />
+		</p:column>
+
+		<p:column headerText="Nom">
+			<h:outputText value="#{cat.nomCategorie}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{cat.description}" />
+		</p:column>
+
+		<p:column headerText="Photo">
+			<h:graphicImage value="#{cat.image}"
+				style="width:100px; height:100px" />
+		</p:column>
+
+		<p:column headerText="Color">
+			<h:outputText value="#{car.color}" />
+		</p:column>
+	</p:dataTable>
 
 
 
 
-<h:form>
-		<h:commandLink value="Supprimer mon compte"
-			action="supprimerClient" />
+	<h:form>
+		<h:commandLink value="Supprimer mon compte" action="supprimerClient" />
+		<br/>
+		<br/>
+		<h:commandLink value="Modifier mes informations"
+			action="modifierClient" />
 	</h:form>
 
 
