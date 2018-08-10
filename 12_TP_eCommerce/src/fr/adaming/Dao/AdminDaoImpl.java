@@ -22,49 +22,6 @@ public class AdminDaoImpl implements IAdminDao {
 	private EntityManager em;
 	
 	
-	
-	
-	/**Déclaration des méthodes du CRUD*/
-	
-
-	public Produit addProduit(Produit p, Categorie cat) {
-		em.persist(p);
-		return p;
-	}
-	
-	
-	
-	
-
-	public Produit getProduitById(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Produit supprProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Produit modifPoduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	public List<Produit> getAllProduit(Categorie cat) {
-		
-		
-		String req = "SELECT p FROM Produit As p WHERE p.categorie=:pId";
-		
-		Query query = em.createQuery(req);
-		
-		query.setParameter("pId", cat.getIdCategorie());
-		
-		return query.getResultList();
-	}
-	
-
 
 
 	/**Developpement de la méthode isExist pour créer une session admin*/
@@ -91,60 +48,6 @@ public class AdminDaoImpl implements IAdminDao {
 		return null;
 	}
 
-
-
-	
-	
-	
-	
-	
-	
-	
-
-	/**Déclaration des méthodes du CRUD de categorie*/
-
-	
-	public Categorie addCategorie(Categorie cat) {
-		em.persist(cat);
-		return cat;
-	}
-
-
-
-
-	public Categorie supprCategorie(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-	public Categorie modifCategorie(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-	public Categorie getCategorieByName(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
-
-	
-
-	
-
-	
-	
 
 
 	

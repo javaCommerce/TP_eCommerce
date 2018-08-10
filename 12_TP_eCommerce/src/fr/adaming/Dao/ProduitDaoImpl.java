@@ -32,10 +32,17 @@ public class ProduitDaoImpl implements IProduitDao{
 		return p;
 	}
 
-	public Produit getProduitById(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("unchecked")
+	public List<Produit> getProduitByKeyWord(Produit p) {
+		
+		String req = "SELECT p FROM Produit AS p WHERE p.designation IN p.description";
+		
+		Query query = em.createQuery(req);
+		
+		return query.getResultList();
 	}
+	
+	
 
 	public Produit supprProduit(Produit p) {
 		// TODO Auto-generated method stub
@@ -47,6 +54,7 @@ public class ProduitDaoImpl implements IProduitDao{
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Produit> getAllProduit(Categorie cat) {
 		
 		String req = "SELECT p FROM Produit As p WHERE p.categorie=:pId";

@@ -136,52 +136,5 @@ public class AdminManagedBean implements Serializable {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	public String ajouterProduit() {
-
-		Produit pAjout = aService.addProduit(this.produit, this.cat);
-
-		if (pAjout.getIdProduit() != 0) {
-
-			List<Produit> listeProduit = aService.getAllProduit(cat);
-
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
-
-			return "accueil";
-		} else {
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout n'à pas été effectué"));
-			return "ajoutProduit";
-		}
-	}
-
-	public String ajouterCategorie() {
-
-		this.cat.setPhoto(file.getContents());
-		
-		Categorie catAjout = aService.addCategorie(this.cat);
-
-		if (catAjout.getIdCategorie() != 0) {
-
-			List<Categorie> listeCategorie = clService.getAllCategoriesService();
-
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe",
-					listeCategorie);
-
-			return "accueil";
-		} else {
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout n'à pas été effectué"));
-			return "ajoutCategorie";
-		}
-	}
 
 }

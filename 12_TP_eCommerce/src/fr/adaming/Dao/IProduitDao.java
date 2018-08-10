@@ -17,7 +17,7 @@ public interface IProduitDao {
 	
 	public Produit addProduit(Produit p);
 	
-	public Produit getProduitById (Produit p);
+	public List<Produit> getProduitByKeyWord (Produit p);
 	
 	public Produit supprProduit(Produit p);
 	

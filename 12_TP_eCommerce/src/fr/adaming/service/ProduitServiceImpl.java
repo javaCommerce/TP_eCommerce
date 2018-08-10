@@ -29,10 +29,12 @@ public class ProduitServiceImpl implements IProduitService{
 	
 	
 
-	public Produit getProduitById(Produit p, Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getProduitByKeyWord(Produit p) {
+	
+		return proDao.getProduitByKeyWord(p);
 	}
+	
+	
 
 	public Produit supprProduit(Produit p, Categorie cat) {
 		// TODO Auto-generated method stub

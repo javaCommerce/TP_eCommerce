@@ -13,29 +13,13 @@ import fr.adaming.entities.Produit;
 public interface IAdminService {
 	
 	
-	/**Déclaration des méthodes de admin dao*/
+	/**Déclaration de la méthodes is exist*/
 	
-	public Produit addProduit(Produit p, Categorie cat);
 	
-	public Produit getProduitById (Produit p);
-	
-	public Produit supprProduit(Produit p);
-	
-	public Produit modifPoduit(Produit p);
-	
-	public List<Produit> getAllProduit(Categorie cat);
 	
 	public Admin isExist(Admin a);
 	
 
-	
-	public Categorie addCategorie(Categorie cat);
-	
-	public Categorie supprCategorie(Categorie cat);
-	
-	public Categorie modifCategorie(Categorie cat);
-	
-	public Categorie getCategorieByName(Categorie cat);
 	
 	
 }

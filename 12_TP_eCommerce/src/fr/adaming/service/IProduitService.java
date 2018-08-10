@@ -18,7 +18,7 @@ public interface IProduitService {
 	
 	public Produit addProduit(Produit p, Categorie cat);
 	
-	public Produit getProduitById (Produit p, Categorie cat);
+	public List<Produit> getProduitByKeyWord (Produit p);
 	
 	public Produit supprProduit(Produit p, Categorie cat);
 	

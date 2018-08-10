@@ -14,9 +14,12 @@
 
 <h:body>
 
+<ui:composition template="/templates/layout.xhtml">
+
+
 
 <h:form>
-<h:commandButton value="afficher liste cat" action="#{clMB.getAllCategories}"></h:commandButton>
+<h:commandButton value="Accueil" action="#{catMB.getAllCategories}"></h:commandButton>
 </h:form>
 
 
@@ -30,7 +33,7 @@
 
 
 
-
+</ui:composition>
 
 </h:body>
 

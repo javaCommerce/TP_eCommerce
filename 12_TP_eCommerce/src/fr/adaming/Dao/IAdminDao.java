@@ -22,28 +22,4 @@ public interface IAdminDao {
 	
 	
 	
-	public Produit addProduit(Produit p, Categorie cat);
-	
-	public Produit getProduitById (Produit p);
-	
-	public Produit supprProduit(Produit p);
-	
-	public Produit modifPoduit(Produit p);
-	
-	public List<Produit> getAllProduit(Categorie cat);
-	
-	
-	
-	
-	
-	
-	
-	
-	public Categorie addCategorie(Categorie cat);
-	
-	public Categorie supprCategorie(Categorie cat);
-	
-	public Categorie modifCategorie(Categorie cat);
-	
-	public Categorie getCategorieByName(Categorie cat);
 }

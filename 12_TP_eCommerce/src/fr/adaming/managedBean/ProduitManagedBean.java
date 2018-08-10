@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.model.UploadedFile;
+
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IProduitService;
@@ -28,7 +30,7 @@ public class ProduitManagedBean implements Serializable{
 	
 	private Produit pro;
 	private Categorie cat;
-	
+	private UploadedFile file;
 	
 	/** Constructeur vide et instanciation des objets utilisé */
 	
@@ -36,12 +38,14 @@ public class ProduitManagedBean implements Serializable{
 		super();
 		this.pro = new Produit();
 		this.cat = new Categorie();
+		
 	}
 
 
 	
 	/**getter et setter*/
 	
+		
 	public IProduitService getProService() {
 		return proService;
 	}
@@ -73,11 +77,25 @@ public class ProduitManagedBean implements Serializable{
 	
 	
 	
+	public UploadedFile getFile() {
+		return file;
+	}
+
+
+
+	public void setFile(UploadedFile file) {
+		this.file = file;
+	}
+
+
+
 	/**Autre méthode : CRUD*/
 	
 	
 	
 	public String ajouterProduit() {
+		
+		this.pro.setPhoto(file.getContents());		
 
 		Produit pAjout = proService.addProduit(this.pro, this.cat);
 
