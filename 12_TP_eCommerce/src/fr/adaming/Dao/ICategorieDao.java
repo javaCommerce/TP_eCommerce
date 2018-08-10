@@ -18,7 +18,7 @@ public interface ICategorieDao {
 	
 	public Categorie modifCategorie(Categorie cat);
 	
-	public Categorie getCategorieByName(Categorie cat);
+	public Categorie getCategorieById(Categorie cat);
 	
 	public List<Categorie> getAllCategorie();
 	

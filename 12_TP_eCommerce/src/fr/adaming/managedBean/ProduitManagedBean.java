@@ -1,13 +1,10 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import org.primefaces.model.UploadedFile;
 
@@ -15,131 +12,55 @@ import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IProduitService;
 
-@ManagedBean(name="proMB")
+@ManagedBean(name = "prMB")
 @RequestScoped
+public class ProduitManagedBean implements Serializable {
 
-public class ProduitManagedBean implements Serializable{
-	
-	
-	/** Declaration de l'uml en java et injection de ejb */
+	// transformation de l'association UML en JAVA
 	@EJB
-	private IProduitService proService;
+	private IProduitService prService;
 
-	
-	/**Declaration des attribus de produits MB*/
-	
 	private Produit pro;
-	private Categorie cat;
 	private UploadedFile file;
-	
-	/** Constructeur vide et instanciation des objets utilisé */
-	
+	private Categorie cat;
+
 	public ProduitManagedBean() {
-		super();
 		this.pro = new Produit();
 		this.cat = new Categorie();
-		
 	}
-
-
-	
-	/**getter et setter*/
-	
-		
-	public IProduitService getProService() {
-		return proService;
-	}
-
-
-	public void setProService(IProduitService proService) {
-		this.proService = proService;
-	}
-
 
 	public Produit getPro() {
 		return pro;
 	}
 
-
 	public void setPro(Produit pro) {
 		this.pro = pro;
 	}
 
-
-	public Categorie getCat() {
-		return cat;
-	}
-
-
-	public void setCat(Categorie cat) {
-		this.cat = cat;
-	}
-	
-	
-	
 	public UploadedFile getFile() {
 		return file;
 	}
-
-
 
 	public void setFile(UploadedFile file) {
 		this.file = file;
 	}
 
-
-
-	/**Autre méthode : CRUD*/
-	
-	
-	
-	public String ajouterProduit() {
-		
-		this.pro.setPhoto(file.getContents());		
-
-		Produit pAjout = proService.addProduit(this.pro, this.cat);
-
-		if (pAjout.getIdProduit() != 0) {
-
-			List<Produit> listeProduit = proService.getAllProduit(cat);
-
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
-
-			return "accueil";
-		} else {
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("L'ajout n'à pas été effectué"));
-			return "ajoutProduit";
-		}
+	public Categorie getCat() {
+		return cat;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public void setCat(Categorie cat) {
+		this.cat = cat;
+	}
+
+	public String ajouterProduit() {
+
+		pro.setPhoto(file.getContents());
+
+		Produit prOut = prService.addProduit(pro, cat);
+
+		System.out.println(this.pro.getDescription());
+		return null;
+	}
 
 }

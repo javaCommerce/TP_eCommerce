@@ -49,9 +49,8 @@ public class CategorieDaoImpl implements ICategorieDao{
 		return null;
 	}
 
-	public Categorie getCategorieByName(Categorie cat) {
-		// TODO Auto-generated method stub
-		return null;
+	public Categorie getCategorieById(Categorie cat) {
+		return em.find(Categorie.class, cat.getIdCategorie());
 	}
 
 	/***************************Liste des catégories*/	

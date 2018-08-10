@@ -23,18 +23,20 @@
 		
 		
 		
-			Décrivez la categorie :<p:inputText value="#{proMB.pro.description}" />		
+			Décrivez la categorie :<p:inputText value="#{prMB.pro.description}" />		
 
-			Désignation :<p:inputText value="#{proMB.pro.designation}" />
+			Désignation :<p:inputText value="#{prMB.pro.designation}" />
 
-			<p:fileUpload value="#{proMB.file}" mode="simple" skinSimple="true" />
+			photo : <p:fileUpload value="#{prMB.file}" mode="simple" skinSimple="true" />
 		
-			prix : <p:inputNumber value="#{proMB.pro.prix}" />
+			prix : <p:inputNumber value="#{prMB.pro.prix}" />
 
-			quantité : <p:inputNumber value="#{proMB.pro.quantite}" />
+			quantité : <p:inputNumber value="#{prMB.pro.quantite}" />
 			
-			
- 		 <h:commandButton value="ajouter" action="#{proMB.ajouterProduit}" />
+			id Cat : <p:inputText value="#{prMB.cat.idCategorie}" />
+
+
+			<h:commandButton value="ajouter" action="#{prMB.ajouterProduit}" />
 
 
 

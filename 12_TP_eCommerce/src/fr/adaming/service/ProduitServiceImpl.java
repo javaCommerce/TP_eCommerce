@@ -7,6 +7,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import fr.adaming.Dao.CategorieDaoImpl;
+import fr.adaming.Dao.ICategorieDao;
+import fr.adaming.Dao.IProduitDao;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Produit;
 
@@ -17,14 +19,19 @@ public class ProduitServiceImpl implements IProduitService{
 	
 	/**Déclaration de l'association uml en java et injecter ejb*/
 	@EJB
-	private IProduitService proDao;
+	private IProduitDao proDao;
+	
+	@EJB
+	private ICategorieDao catDao;
 	
 	
 	/**Déclaration des méthodes du CRUD*/
 
 	public Produit addProduit(Produit p, Categorie cat) {
-		p.setCat(cat);
-		return proDao.addProduit(p, cat);
+		
+		Categorie catOut=catDao.getCategorieById(cat);
+		p.setCat(catOut);
+		return proDao.addProduit(p);
 	}
 	
 	
