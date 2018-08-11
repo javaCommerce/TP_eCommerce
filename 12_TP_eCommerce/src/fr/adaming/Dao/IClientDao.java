@@ -30,4 +30,6 @@ public interface IClientDao {
 
 	public List<Categorie> getAllCategories();
 
+	public List<Produit> getAllProduits(Categorie cat);
+
 }
