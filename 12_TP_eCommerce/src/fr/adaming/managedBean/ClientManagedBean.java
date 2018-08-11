@@ -9,6 +9,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.model.UploadedFile;
+
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
@@ -44,6 +46,10 @@ public class ClientManagedBean implements Serializable {
 	private Client client;
 	private Categorie categorie;
 
+	
+	
+	
+
 	/**
 	 * Déclaration du constructeur vide
 	 */
@@ -51,6 +57,7 @@ public class ClientManagedBean implements Serializable {
 	public ClientManagedBean() {
 		super();
 		this.client = new Client();
+		this.categorie = new Categorie();
 
 	}
 
@@ -73,6 +80,8 @@ public class ClientManagedBean implements Serializable {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	
+
 
 	/**
 	 * Définition des méthodes du managedBean
@@ -192,7 +201,7 @@ public class ClientManagedBean implements Serializable {
 			/**
 			 * Ajouter la liste trouvée dans la session http
 			 */
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("clSession", listeProOut);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("proListe", listeProOut);
 
 			return "accueilClient";
 		} else {

@@ -12,12 +12,10 @@
 
 <h:body>
 
-	Page accueil client test
+	<h1 style="color: darkblue; text-align: center;">Liste des
+		catégories de produits disponibles sur notre site</h1>
 
-<p:dataTable var="cat" value="#{sessionScope.catListe}">
-		<p:column headerText="Désignation">
-			<h:outputText value="#{cat.idCategorie}" />
-		</p:column>
+	<p:dataTable var="cat" value="#{sessionScope.catListe}">
 
 		<p:column headerText="Nom">
 			<h:outputText value="#{cat.nomCategorie}" />
@@ -32,18 +30,44 @@
 				style="width:100px; height:100px" />
 		</p:column>
 
-		<p:column headerText="Color">
-			<h:outputText value="#{car.color}" />
+	</p:dataTable>
+	<h:form>
+		<h:commandButton value="Afficher toutes les catégories"
+			action="#{clMB.getAllCategories}" />
+	</h:form>
+
+	<br />
+	<br />
+
+	<p:dataTable var="pro" value="#{sessionScope.proListe}">
+		<p:column headerText="Désignation">
+			<h:outputText value="#{pro.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{pro.nom}" />
+		</p:column>
+
+		<p:column headerText="Prix">
+			<h:outputText value="#{pro.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité">
+			<h:outputText value="#{pro.quantite}" />
 		</p:column>
 	</p:dataTable>
 
 
 
 
+	<h1>
+		<h:messages />
+	</h1>
+
 	<h:form>
 		<h:commandLink value="Supprimer mon compte" action="supprimerClient" />
-		<br/>
-		<br/>
+		<br />
+		<br />
 		<h:commandLink value="Modifier mes informations"
 			action="modifierClient" />
 	</h:form>

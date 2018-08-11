@@ -28,4 +28,6 @@ public interface IClientDao {
 
 	public List<Client> getAllClient();
 
+	public List<Categorie> getAllCategories();
+
 }
