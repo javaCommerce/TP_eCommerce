@@ -95,11 +95,20 @@ public class CategorieManagedBean implements Serializable {
 	}
 	
 	
-	public String getCatById(){
+	public String rechCatById(){
 		
+		Categorie catCherch=catService.getCategorieById(cat);
 		
+		if (catCherch!=null){
+			
+			this.cat=catCherch;
+			
+			
+		}else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la reche de la categorie à échoué"));
+		}
 		
-		
+		return "rechercheCategorie";
 		
 	}
 	
