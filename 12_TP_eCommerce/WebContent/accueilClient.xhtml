@@ -18,6 +18,10 @@
 
 	<p:dataTable var="cat" value="#{sessionScope.catListe}">
 
+		<p:column headerText="ID">
+			<h:outputText value="#{cat.idCategorie}" />
+		</p:column>
+
 		<p:column headerText="Nom">
 			<h:outputText value="#{cat.nomCategorie}" />
 		</p:column>
@@ -40,24 +44,38 @@
 	<br />
 	<br />
 
-	<p:dataTable var="pro" value="#{sessionScope.proListe}">
-		<p:column headerText="Désignation">
-			<h:outputText value="#{pro.designation}" />
-		</p:column>
+	<h:form>
+ID de la catégorie dont vous cherchez les produits : <h:inputText
+			value="#{clMB.categorie.idCategorie}" />
+		<br />
+		<br />
+		<h:form>
+			<h:commandButton value="Afficher les produits"
+				action="#{clMB.getAllProduits}" />
+		</h:form>
+		<br />
+		<p:dataTable var="pro" value="#{sessionScope.proListe}">
+			<p:column headerText="Désignation">
+				<h:outputText value="#{pro.designation}" />
+			</p:column>
 
-		<p:column headerText="Description">
-			<h:outputText value="#{pro.nom}" />
-		</p:column>
+			<p:column headerText="Description">
+				<h:outputText value="#{pro.description}" />
+			</p:column>
 
-		<p:column headerText="Prix">
-			<h:outputText value="#{pro.prix}" />
-		</p:column>
+			<p:column headerText="Prix">
+				<h:outputText value="#{pro.prix}" />
+			</p:column>
 
-		<p:column headerText="Quantité">
-			<h:outputText value="#{pro.quantite}" />
-		</p:column>
-	</p:dataTable>
+			<p:column headerText="Quantité">
+				<h:outputText value="#{pro.quantite}" />
+			</p:column>
 
+			<p:column headerText="Photo">
+				<h:graphicImage value="#{pro.image}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
 
 
 

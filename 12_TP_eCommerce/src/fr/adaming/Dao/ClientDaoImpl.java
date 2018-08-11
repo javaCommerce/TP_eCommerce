@@ -68,7 +68,13 @@ public class ClientDaoImpl implements IClientDao {
 		 */
 		query.setParameter("pId", cat.getIdCategorie());
 
-		return query.getResultList();
+		List<Produit> listePro = query.getResultList();
+
+		for (Produit pro : listePro) {
+			pro.setImage("data:image/png;base64," + Base64.encodeBase64String(pro.getPhoto()));
+		}
+
+		return listePro;
 	}
 
 	public Produit addProduit() {
