@@ -113,15 +113,74 @@ public class CategorieManagedBean implements Serializable {
 	}
 	
 	
+	public String getAllCategorie() {
+
+		/**
+		 * Récupérer la liste des catégories
+		 */
+		List<Categorie> listeCatOut = catService.getAllCategorie();
+
+		if (listeCatOut != null) {
+
+			/**
+			 * Ajouter la liste trouvée dans la session http
+			 */
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListe", listeCatOut);
+
+			return "listeCategorie";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Désolé, ces categories n'existent pas !"));
+			return "accueil";
+		}
+
+	}
 	
 	
+	public String supprCategorie(){
+		
+		int verif = catService.supprCategorie(cat);
+		
+		if(verif !=0) {
+			
+			List<Categorie> listeCategorie = catService.getAllCategorie();
+			
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", listeCategorie);
+			
+			return "accueil";
+			
+		}else{
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la suppression n'a pas pu être effectué"));
+		
+		return "supprCategorie";
+	}
+	
+	}
 	
 	
-	
-	
-	
-	
-	
+	public String modifCategorie(){
+		
+		
+		int verif = catService.modifCategorie(cat);
+		
+		if(verif!=0){
+			
+			
+			List<Categorie> listeCategorie = catService.getAllCategorie();
+			
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("categorieListe", listeCategorie);
+			
+			return "accueil";
+		}else{
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("la modification n'a pas été effectué"));
+			
+			return "modifCategorie";
+			
+		}
+		
+	}
 	
 	
 	

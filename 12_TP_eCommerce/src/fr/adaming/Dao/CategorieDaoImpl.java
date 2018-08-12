@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.entities.Categorie;
 
 @Stateless
@@ -54,8 +56,25 @@ public class CategorieDaoImpl implements ICategorieDao{
 	
 
 	public int modifCategorie(Categorie cat) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		/**Requete JPQL*/
+		
+		String req="UPDATE Categorie cat SET cat.description=:pDescription, cat.nomCategorie=:pNomCategorie, cat.photo=:pPhoto WHERE cat.idCategorie=:pIdCategorie";
+		
+		/**Créer le query*/
+		
+		Query query = em.createQuery(req);
+		
+		/**passage des parametres*/
+		
+		query.setParameter("pDescription", cat.getDescription());
+		query.setParameter("pNomCategorie", cat.getNomCategorie());
+		query.setParameter("pPhoto", cat.getPhoto());
+		query.setParameter("pIdCategorie", cat.getIdCategorie());
+		
+		
+		
+		return query.executeUpdate();
 	}
 	
 	
@@ -63,7 +82,23 @@ public class CategorieDaoImpl implements ICategorieDao{
 	
 
 	public Categorie getCategorieById(Categorie cat) {
-		return em.find(Categorie.class, cat.getIdCategorie());
+		
+		String req="Select cat From Categorie as cat where cat.id=:pId";
+		
+		
+		Query query = em.createQuery(req);
+		
+		/**passage de parametres*/
+		
+		query.setParameter("pId", cat.getIdCategorie());
+		
+		Categorie catOut = (Categorie) query.getSingleResult();		
+		
+		cat.setImage("data:image/png;base64," + Base64.encodeBase64String(cat.getPhoto()));
+		
+
+		return catOut;
+	
 	}
 
 	
@@ -90,9 +125,14 @@ public class CategorieDaoImpl implements ICategorieDao{
 		 * retourne la liste des catégories trouvée
 		 */
 
-		return query.getResultList();
+		List<Categorie> listeCats = query.getResultList();
+
+		for (Categorie cat : listeCats) {
+			cat.setImage("data:image/png;base64," + Base64.encodeBase64String(cat.getPhoto()));
+		}
+
+		return listeCats;
 	}
-	
 	
 	
 	

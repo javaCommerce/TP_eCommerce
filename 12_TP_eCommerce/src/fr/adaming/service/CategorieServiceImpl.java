@@ -47,22 +47,16 @@ public class CategorieServiceImpl implements ICategorieService{
 
 	public int modifCategorie(Categorie cat) {
 		// TODO Auto-generated method stub
-		return 0;
+		return catDao.modifCategorie(cat);
 	}
 
 	
 	
 	public Categorie getCategorieById(Categorie cat) {
 
-		Categorie catOut=catDao.getCategorieById(cat);
-		
-		if(catOut!=null){
-			return catOut;
-		}
-		
-		return null;
+		return catDao.getCategorieById(cat);
 	}
-
+		
 	
 	
 	

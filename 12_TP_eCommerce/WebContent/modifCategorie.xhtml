@@ -7,27 +7,37 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Ajouter un categorie</title>
+
 </h:head>
+
+
+
 
 <h:body>
 
 
-
-	<h:form enctype="multipart/form-data">
+<h:form enctype="multipart/form-data">
 		<h:panelGrid columns="2">
+		
+			id : <p:inputText value="#{catMB.cat.idCategorie}" />		
+		
 			Décrivez la categorie :<p:inputText value="#{catMB.cat.description}" />		
 
 		
 			nom : <p:inputText value="#{catMB.cat.nomCategorie}" />
 
 
-
 			<p:fileUpload value="#{catMB.file}" mode="simple" skinSimple="true" />
-
-			<h:commandButton value="ajouter" action="#{catMB.ajouterCategorie}" />
+			
+			
+			
 		</h:panelGrid>
+		
+		
+		<h:commandButton value="Modifier" action="#{catMB.modifCategorie}" />
+		
 	</h:form>
+
 
 
 
