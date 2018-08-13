@@ -118,8 +118,8 @@ public class CategorieManagedBean implements Serializable {
 		/**
 		 * Récupérer la liste des catégories
 		 */
-		List<Categorie> listeCatOut = catService.getAllCategorie();
-
+		List<Categorie> listeCatOut = catService.getAllCategorie();				
+		
 		if (listeCatOut != null) {
 
 			/**

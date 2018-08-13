@@ -34,7 +34,7 @@ public class Categorie {
 
 	/** déclaration de l'association uml en java */
 
-	@OneToMany(mappedBy = "cat", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "cat", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Produit> listeProduit;
 
 	/** Déclaration des constructeurs */
