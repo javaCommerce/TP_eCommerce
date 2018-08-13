@@ -26,6 +26,8 @@ public class ProduitDaoImpl implements IProduitDao{
 	/**Déclaration des méthodes du CRUD de produit*/
 	
 	
+	
+	/**Méthode ajouter un produit*/
 
 	public Produit addProduit(Produit p) {
 		em.persist(p);
@@ -43,16 +45,41 @@ public class ProduitDaoImpl implements IProduitDao{
 	}
 	
 	
+	
+	
+	/**Méthode supprimer un produit*/
 
-	public Produit supprProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public int supprProduit(Produit p) {
 
-	public Produit modifPoduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+
+		try{
+			
+			em.remove(p);
+			return 1;
+		}catch (Exception ex) {
+			
+			ex.printStackTrace();
+		}
+		
+		return 0;
 	}
+	
+	
+	
+	
+	
+	
+
+	public int modifPoduit(Produit p) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	
+	
+	
+	
 
 	@SuppressWarnings("unchecked")
 	public List<Produit> getAllProduit(Categorie cat) {
@@ -64,6 +91,16 @@ public class ProduitDaoImpl implements IProduitDao{
 		query.setParameter("pId", cat.getIdCategorie());
 		
 		return query.getResultList();
+	}
+
+	
+	
+	
+	
+	@Override
+	public Produit getProduitById(Produit P) {
+		
+		return em.find(Produit.class, P.getIdProduit());
 	}
 	
 	

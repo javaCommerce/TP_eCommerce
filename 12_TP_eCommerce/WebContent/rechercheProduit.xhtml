@@ -7,7 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Rechercher une categorie</title>
+<title>Rechercher produit</title>
 </h:head>
 
 
@@ -19,13 +19,14 @@
 
 
 
+
 	<h:form enctype="multipart/form-data">
 		<h:panelGrid columns="2">
 		
-			ID de la categorie :<p:inputNumber value="#{catMB.cat.idCategorie}" />
+			ID du produit :<p:inputNumber value="#{prMB.pro.idProduit}" />
 
 
-			<h:commandButton value="Rechercher" action="#{catMB.rechCatById}" />
+			<h:commandButton value="Rechercher" action="#{prMB.getProduitById}" />
 		</h:panelGrid>
 	</h:form>
 
@@ -33,19 +34,27 @@
 
 
 
-	<p:dataTable var="cat" value="#{catMB.cat}">
+	<p:dataTable var="pr" value="#{prMB.pro}">
 	
 		<p:column headerText="Id">
-			<h:outputText value="#{cat.idCategorie}" />
+			<h:outputText value="#{pr.idProduit}" />
+		</p:column>
+
+		<p:column headerText="Designation">
+			<h:outputText value="#{pr.designation}" />
 		</p:column>
 
 		<p:column headerText="Description">
-			<h:outputText value="#{cat.description}" />
+			<h:outputText value="#{pr.description}" />
 		</p:column>
 
 
-		<p:column headerText="Nom">
-			<h:outputText value="#{cat.nomCategorie}" />
+		<p:column headerText="Prix">
+			<h:outputText value="#{pr.prix}" />
+		</p:column>
+		
+			<p:column headerText="Quantité">
+			<h:outputText value="#{pr.quantite}" />
 		</p:column>
 		
 		
@@ -54,6 +63,10 @@
 		</p:column>
 		
 	</p:dataTable>
+
+
+
+
 
 
 

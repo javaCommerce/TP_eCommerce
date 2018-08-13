@@ -19,13 +19,13 @@ public interface IProduitDao {
 	
 	public List<Produit> getProduitByKeyWord (Produit p);
 	
-	public Produit supprProduit(Produit p);
+	public int supprProduit(Produit p);
 	
-	public Produit modifPoduit(Produit p);
+	public int modifPoduit(Produit p);
 	
 	public List<Produit> getAllProduit(Categorie cat);
 	
-	
+	public Produit getProduitById (Produit P);
 	
 	
 	

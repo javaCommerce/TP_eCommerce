@@ -3,8 +3,10 @@ package fr.adaming.managedBean;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.model.UploadedFile;
 
@@ -52,7 +54,13 @@ public class ProduitManagedBean implements Serializable {
 	public void setCat(Categorie cat) {
 		this.cat = cat;
 	}
+	
+	
+	/** Autre méthode (CRUD)*/
+	
 
+	/** Ajouter un produit*/
+	
 	public String ajouterProduit() {
 
 		pro.setPhoto(file.getContents());
@@ -62,5 +70,63 @@ public class ProduitManagedBean implements Serializable {
 		System.out.println(this.pro.getDescription());
 		return null;
 	}
+	
+	
+	
+	/**Get produit par son id*/
+	
+	
+	public String getProduitById(){
+		
+		Produit pRech=prService.getProduitById(pro, cat);
+		System.out.println("***********************************************"+pRech);
+		if(pRech!=null){
+			
+			this.pro=pRech;
+			
+		}else{
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La recherche du produit a échoué"));
+		}
+		
+		return "rechercheProduit";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

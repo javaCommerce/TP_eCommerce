@@ -28,8 +28,9 @@
 
     <p:submenu label="Produits" icon="ui-icon-check">
         <p:column>
-            <p:submenu label="TV.1">
-                <p:menuitem value="TV.1.1" url="#" />
+            <p:submenu label="Option des produits">
+               <p:menuitem value="Ajouter un produit" url="ajoutProduit.xhtml"/>
+                <p:menuitem value="Rechercher un produit" url="rechercheProduit.xhtml"/>
                 <p:menuitem value="TV.1.2" url="#" />
             </p:submenu>
             <p:submenu label="TV.2">
@@ -66,7 +67,7 @@
  
         <p:column>
             <p:submenu label="Option catégorie">
-                <p:menuitem value="Ajouter une catégorie" url="ajoutCategorie.xhtml" action="#{catMB.getAllCategorie}" />
+                <p:menuitem value="Ajouter une catégorie" url="ajoutCategorie.xhtml" />
                 <p:menuitem value="Rechercher une catégorie" url="rechercheCategorie.xhtml" />
                 <p:menuitem value="afficher toutes les catégories" url="listeCategorie.xhtml" />
                  <p:menuitem value="Supprimer une catégorie" url="supprCategorie.xhtml" />

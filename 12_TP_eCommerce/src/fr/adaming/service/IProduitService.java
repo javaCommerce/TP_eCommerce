@@ -22,10 +22,10 @@ public interface IProduitService {
 	
 	public Produit supprProduit(Produit p, Categorie cat);
 	
-	public Produit modifPoduit(Produit p, Categorie cat);
+	public Produit modifProduit(Produit p, Categorie cat);
 	
 	public List<Produit> getAllProduit(Categorie cat);
 	
-	
+	public Produit getProduitById (Produit p, Categorie cat);
 
 }

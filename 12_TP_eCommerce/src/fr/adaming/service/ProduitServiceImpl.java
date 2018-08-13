@@ -43,12 +43,21 @@ public class ProduitServiceImpl implements IProduitService{
 	
 	
 
+	
+	
 	public Produit supprProduit(Produit p, Categorie cat) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		return null;
 	}
 
-	public Produit modifPoduit(Produit p, Categorie cat) {
+	
+	
+	
+	
+	
+	public Produit modifProduit(Produit p, Categorie cat) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,6 +65,30 @@ public class ProduitServiceImpl implements IProduitService{
 	public List<Produit> getAllProduit(Categorie cat) {
 		
 		return proDao.getAllProduit(cat);
+	}
+
+	
+	
+
+	/**Methode get produit par son id*/
+
+	@Override
+	public Produit getProduitById(Produit p, Categorie cat) {
+		p.setCat(cat);
+		
+		Produit pOut=proDao.getProduitById(p);
+		
+		if(pOut!=null){
+		if(pOut.getCat().getIdCategorie()==cat.getIdCategorie()){
+			
+			return pOut;
+		}
+			
+			
+		}
+		
+		
+		return null;
 	}
 	
 	
