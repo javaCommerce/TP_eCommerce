@@ -1,6 +1,7 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -79,7 +80,7 @@ public class ProduitManagedBean implements Serializable {
 	public String getProduitById(){
 		
 		Produit pRech=prService.getProduitById(pro, cat);
-		System.out.println("***********************************************"+pRech);
+		
 		if(pRech!=null){
 			
 			this.pro=pRech;
@@ -87,17 +88,51 @@ public class ProduitManagedBean implements Serializable {
 		}else{
 			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La recherche du produit a échoué"));
-		}
 		
+		}
 		return "rechercheProduit";
+		
 		
 	}
 	
 	
+	public String supprProduit(){
+		
+		int verif = prService.supprProduit(pro, cat);
+		
+		if (verif!=0){
+			
+			List<Produit> listeProduit = prService.getAllProduit(cat);
+			
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
+		
+			return "accueil";
+		}else{
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("La suppression n'a pas pu être efectué"));
+		
+			return "supprProduit";
+			
+		}
+				
+	}
 	
 	
-	
-	
+	public String getAllProduit(){
+		
+		List<Produit> listeProduit = prService.getAllProduit(cat);
+		
+		if(listeProduit!=null){
+			
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitListe", listeProduit);
+			
+			return "listeProduit";
+		}else{
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ces produits n'existent pas"));
+			return "accueil";
+		}
+	}
 	
 	
 	

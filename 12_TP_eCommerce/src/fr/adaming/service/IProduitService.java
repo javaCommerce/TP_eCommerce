@@ -20,7 +20,7 @@ public interface IProduitService {
 	
 	public List<Produit> getProduitByKeyWord (Produit p);
 	
-	public Produit supprProduit(Produit p, Categorie cat);
+	public int supprProduit(Produit p, Categorie cat);
 	
 	public Produit modifProduit(Produit p, Categorie cat);
 	

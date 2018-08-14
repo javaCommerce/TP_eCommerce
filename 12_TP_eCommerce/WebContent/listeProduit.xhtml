@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+<title>liste produit</title>
+</h:head>
+
+
+
+
+<h:body>
+
+
+
+
+	
+
+
+
+
+
+
+<p:dataTable var="pro" value="#{sessionScope.produitListe}">
+
+		<p:column headerText="Description">
+			<h:outputText value="#{pro.description}" />
+		</p:column>
+
+		<p:column headerText="Désignation">
+			<h:outputText value="#{pro.designation}" />
+		</p:column>
+		
+		<p:column headerText="Photo">
+			<h:graphicImage value="#{cat.image}"
+				style="width:100px; height:100px" />
+		</p:column>
+
+		<p:column headerText="Prix">
+			<h:outputText value="#{pro.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantite">
+			<h:outputText value="#{pro.quantite}" />
+		</p:column>
+
+		
+
+	</p:dataTable>
+	
+	
+	<h:form>
+	
+	
+	<h:panelGrid columns="2">
+
+id de la catégorie lié au produit: <p:inputText value="#{catMB.cat.idCategorie}" />
+
+
+		</h:panelGrid>
+	
+	
+		<h:commandButton value="Afficher" action="#{prMB.getAllProduit}" />
+</h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</h:body>
+
+</html>

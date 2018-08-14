@@ -45,11 +45,17 @@ public class ProduitServiceImpl implements IProduitService{
 
 	
 	
-	public Produit supprProduit(Produit p, Categorie cat) {
+	public int supprProduit(Produit p, Categorie cat) {
 		
+		Produit pSuppr=this.getProduitById(p, cat);
 		
+		if(pSuppr!=null){
+			
+			return proDao.supprProduit(pSuppr);
+			
+		}
 		
-		return null;
+		return 0;
 	}
 
 	
@@ -61,6 +67,8 @@ public class ProduitServiceImpl implements IProduitService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 
 	public List<Produit> getAllProduit(Categorie cat) {
 		
